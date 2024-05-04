@@ -3,9 +3,9 @@ import {
     HarmCategory,
     HarmBlockThreshold,
   }  from "@google/generative-ai";
-  
+
   const MODEL_NAME = "gemini-1.0-pro";
-  const API_KEY = "AIzaSyCJwhP2aV2Z0epbuGsvphN2IA1V3bWhni8";
+  const API_KEY =   import.meta.env.VITE_gemini_key;
   
   async function runChat(Prompt) {
     const genAI = new GoogleGenerativeAI(API_KEY);
