@@ -25,6 +25,4 @@ export const bgassets = {
     j,
     k,
     l,
-    
-
 }

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { assets } from '../../assets/assets';
 import { Context } from '../../context/Context';
 import Voice from '../Main/Voice';
 import { useState, useRef } from 'react';
 import mic from '../../assets/mic/mic.wav';
 import ProfileUser from '../model/ProfileUser';
+import gemini_gem from '../../assets/googleIcons/gemini_gem.svg';
 
 
 
@@ -20,6 +20,14 @@ const Main = () => {
     const profileImage = localStorage.getItem('profileImage');
     const userName = localStorage.getItem('userName');
 
+
+
+    const keyDownHandler = (e) => {
+        console.log(e.key);
+        if (e.keyCode === 13) {
+            onSent();
+        }
+    };
 
     const handleVoiceInput = () => {
         const recognition = new window.webkitSpeechRecognition();
@@ -63,46 +71,53 @@ const Main = () => {
     };
 
 
-
-
     return (
-        <div className='main'>
+        <div className='main -ml-20'>
             {showProfile ? <ProfileUser /> : null}
-            <div className="nav">
-                <p>Gemini</p>
+            <div className="nav ml-3">
+                <p className='smallText'>Gemini</p>
                 <img src={profileImage} onClick={() => setShowProfile(prev => !prev)} alt="User Icon" />
             </div>
             <div className="main-container">
                 {!showResult ? (
                     <>
-                        <div className="greet">
-                            <p><span>Hello, {userName}</span></p>
-                            <p>How can I help you today?</p>
+                        <div className="greet tracking-tight">
+                            <p className='head font-outfit font-normal'>Hello, <span className='font-poppins font-normal'>{userName}</span></p>
+                            <p className='bigText font-poppins -mt-5'>How can I help you today?</p>
                         </div>
-                        <div className="cards">
+                        <div className="cards mt-5">
                             <div className="card"
                                 onClick={() => onSent("Suggest beautiful places to see on an upcoming road trip")}
                             >
                                 <p>Suggest beautiful places to see on an upcoming road trip</p>
-                                <img src={assets.compass_icon} alt='compass_icon' />
+                                <div className='imgs flex justify-center items-center'>
+                                    <div className='compass dimension' alt='compass_icon' ></div>
+                                </div>
                             </div>
                             <div className="card"
                                 onClick={() => onSent("Briefly summarize this concept: urban planning")}
                             >
                                 <p>Briefly summarize this concept: urban planning</p>
-                                <img src={assets.bulb_icon} alt='bulb_icon' />
+                                <div className='imgs flex justify-center items-center'>
+                                    <div className='bulb dimension' alt='bulb_icon' />
+                                </div>
                             </div>
                             <div className="card"
                                 onClick={() => onSent("Brainstorm team bonding activities for our work retreat")}
                             >
                                 <p>Brainstorm team bonding activities for our work retreat</p>
-                                <img src={assets.message_icon} alt='message_icon' />
+                                <div className='imgs flex justify-center items-center'>
+                                    <div className='draw dimension' alt='message_icon' />
+                                </div>
+
                             </div>
                             <div className="card"
                                 onClick={() => onSent("Improve the readability of the following code")}
                             >
                                 <p>Improve the readability of the following code</p>
-                                <img src={assets.code_icon} alt='code_icon' />
+                                <div className='imgs flex justify-center items-center'>
+                                    <div className='code dimension' alt='code_icon' />
+                                </div>
                             </div>
                         </div>
                     </>
@@ -112,56 +127,81 @@ const Main = () => {
                             <img src={profileImage} alt="" />
                             <p>{recentPrompt}</p>
                         </div>
-                        <div className="result-data">
-                            <div className=''>
-                                <img src={assets.gemini_icon} alt="" />
-                                {loading ? <div className='loader animate-loaderspin'>
-                                    <hr />
-                                    <hr className='delay-75' />
-                                    <hr className='delay-100' />
-                                </div>
+                        <div className="">
+                            <div className='w-full result-data'>
+                                <img src={gemini_gem} className={`gemini-gem ${loading ? 'animate-spin' : ''}`} alt="" />
+                                {loading ?
+                                    <div className='loader'>
+                                        <hr className='hr1' />
+                                        <hr className='hr2' />
+                                        <hr className='w-80 hr3' />
+                                    </div>
                                     : <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
                                 }
                             </div>
                         </div>
-                        {/* {loading ? <p>Loading...</p> : <p>{resultData}</p>} */}
                     </div>
                 )}
                 <div className="main-bottom rounded-full">
                     {showWave && <Voice />}
-                    <div className="search-box ">
+                    <div className="search-box " >
                         <input type="text" placeholder='Enter a prompt here'
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
+                            onKeyDown={keyDownHandler}
                         />
                         <div>
-                            <div class="tooltip-container hover:bg-mainBG-300 p-2 rounded-full">
-                                <img src={assets.gallery_icon} alt="gallery_icon" />
-                                <span class="tooltip w-36 text-center">Coming soon ...</span>
-                                <span class="text"></span>
+                            <div class="p-2  hov group transition-all rounded-full">
+                                <div className='flex justify-center items-center'>
+                                    <div className='upload_img dimension  ' alt='code_icon' />
+                                    
+                                </div>
+                                <span
+                                class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm translate-y-12 `}
+                                >Upload img
+                                </span>
                             </div>
 
-                            <div className='mic_box hover:bg-mainBG-300 p-2 rounded-full'
-                                onClick={() => { handleVoiceInput(); setListening(true); playSound(); }}
-                            >
-                                <img src={assets.mic_icon} alt="mic_icon" />
+                            <div class="p-2 rounded-full hov group transition-all"
+                                onClick={() => { handleVoiceInput(); setListening(true); playSound(); }}>
+                                <div className='flex justify-center items-center'>
+                                    <div className='mic_none dimension ' alt='code_icon' />
+                                    <span
+                                        class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm translate-y-12 `}
+                                        >Use microphone
+                                        </span>
+                                </div>
+                                
+
                             </div>
+
                             {
                                 input ?
-                                    <div className='mic_box hover:bg-mainBG-300 p-2 rounded-full'
+                                    <div
+                                        className='hov group transition-all p-2 rounded-full flex justify-center items-center'
                                         onClick={() => onSent()}
+
                                     >
-                                        <img src={assets.send_icon} alt=""
-                                        />
+                                        <div className='flex justify-center items-center'>
+                                        <div className='send dimension' alt='code_icon' />
+                                        </div>
+                                        
+                                        <span
+                                                class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm translate-y-12 `}
+                                            >Submit
+                                            </span>
+
                                     </div>
+
                                     :
                                     null
                             }
+
                         </div>
                     </div>
 
                     <p className="bottom-info">
-                        Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps
+                        Gemini may display inaccurate info, including about people, so double-check its responses. <span>Your privacy and Gemini Apps</span>
                     </p>
                 </div>
             </div>
@@ -169,7 +209,7 @@ const Main = () => {
 
             <audio ref={audioRef}>
                 <source src={mic} type="audio/wav" />
-                Your browser does not support the audio element.
+                Your browser does not support the audio.
             </audio>
         </div>
     );

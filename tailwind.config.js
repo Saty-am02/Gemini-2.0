@@ -37,10 +37,11 @@ export default {
       },
 
       fontFamily: {
+        outfitextralight: "OutfitExtralight",
+        outfitlight: "OutfitLight",
         outfit: "Outfit",
-        empyrean: "Empyrean",
-        saveur: 'Saveur',
-        // Add more custom font families as needed
+        poppins : "Poppins",
+        
       },
     },
     plugins: [],
