@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import profilee from '../../assets/bgimg/SVGpatterns/profilee';
+import profilee from '../../assets/bgimg/SVGpatterns/profilee.png';
 
 const ProfileUser = () => {
   const [user, setUser] = useState(localStorage.getItem('profileImage'));
