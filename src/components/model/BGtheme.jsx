@@ -8,6 +8,7 @@ const BGtheme = () => {
 
     const handleClick = (bg, index) => {
         setSelectedBg(bg);
+        document.body.setAttribute('dark-theme', 'light');
         if (index > Object.keys(svgbg).length - 6) {
             setShowColor('white');
             document.body.setAttribute('dark-theme', 'image');

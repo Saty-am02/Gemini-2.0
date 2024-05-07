@@ -134,6 +134,7 @@ body {
     background-image: var(--selected-bg);
     background-color: var(--mainBG-300);
     -webkit-font-smoothing: antialiased;
+    @apply font-outfit;
 }
 
 @font-face {
@@ -708,5 +709,10 @@ body {
     {
         background-color: var(--mainBG-300);
         color: var(--text);
+    }
+    @media (max-width: 600px) {
+        .sidebar {
+            display: none;
+        }
     }
 }

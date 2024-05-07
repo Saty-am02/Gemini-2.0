@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import profilee from '../../assets/bgimg/SVGpatterns/profilee';
 
 const ProfileUser = () => {
-  const [user, setUser] = useState(localStorage.getItem('profileImage')
-);
-  const [name, setName] = useState(localStorage.getItem('userName') || 'Satyam');
+  const [user, setUser] = useState(localStorage.getItem('profileImage'));
+  const [name, setName] = useState(localStorage.getItem('userName'));
+  setUser(profilee);
+  setName('satyam');
   const [isOpen, setIsOpen] = useState(true);
   const [showbar, setshowBar] = useState(false);
   const fileInputRef = useRef(null);

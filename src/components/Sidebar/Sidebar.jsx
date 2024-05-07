@@ -33,16 +33,6 @@ const Sidebar = () => {
         return () => clearTimeout(timer);
     }, [showTheme]);
 
-    useEffect(() => {
-        let timer;
-        if (showBGTheme) {
-            timer = setTimeout(() => {
-                setShowBGTheme(false);
-            }, 20000);
-        }
-        return () => clearTimeout(timer);
-    }, [showBGTheme]);
-
     const handleBgSelect = (bg) => {
         setSelectedBg(bg);
     };
