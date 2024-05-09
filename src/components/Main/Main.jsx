@@ -5,6 +5,8 @@ import { useState, useRef } from 'react';
 import mic from '../../assets/mic/mic.wav';
 import ProfileUser from '../model/ProfileUser';
 import gemini_gem from '../../assets/googleIcons/gemini_gem.svg';
+import profilee from '../../assets/SVGpatterns/profilee.png';
+
 
 
 
@@ -17,8 +19,8 @@ const Main = () => {
     const [listening, setListening] = useState(false);
     const audioRef = useRef();
 
-    const profileImage = localStorage.getItem('profileImage');
-    const userName = localStorage.getItem('userName');
+    const profileImage = localStorage.getItem('profileImage') || profilee;
+    const userName = localStorage.getItem('userName') || 'satyam';
 
 
 
@@ -158,7 +160,7 @@ const Main = () => {
                                 </div>
                                 <span
                                 class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm translate-y-12 `}
-                                >Upload img
+                                >comming soon...
                                 </span>
                             </div>
 

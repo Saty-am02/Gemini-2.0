@@ -715,4 +715,7 @@ body {
             display: none;
         }
     }
+    .text{
+        color: var(--text);
+    }
 }

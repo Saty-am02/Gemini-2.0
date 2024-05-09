@@ -9,12 +9,21 @@ const BGtheme = () => {
     const handleClick = (bg, index) => {
         setSelectedBg(bg);
         document.body.setAttribute('dark-theme', 'light');
-        if (index > Object.keys(svgbg).length - 6) {
+        if (index > Object.keys(svgbg).length - 4) {
             setShowColor('white');
             document.body.setAttribute('dark-theme', 'image');
-        } else {
+        } 
+        else if(index == 0)
+            {
+                setShowColor('black');
+                document.body.setAttribute('dark-theme', 'light');
+                setSelectedBg('none');
+            }
+            
+        else {
             setShowColor('black');
             document.body.setAttribute('dark-theme', 'light');
+
         }
     };
 

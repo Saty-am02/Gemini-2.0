@@ -77,10 +77,10 @@ const Sidebar = () => {
                     </div>
                     {extended ?
                         <div className='recent'>
-                            <p className="recent-title font-bold">Recent</p>
+                            <p className="recent-title font-bold text">Recent</p>
                             <div className='h-96 overflow-auto'>
                                 {prevPrompts.map((item, index) => (
-                                    <div key={index} className="recent-entry" onClick={() => loadPrompt(item)}>
+                                    <div key={index} className="recent-entry text" onClick={() => loadPrompt(item)}>
                                         <div className='flex justify-center items-center'>
                                             <div className='message dimension' alt='code_icon' />
                                         </div>
@@ -92,13 +92,13 @@ const Sidebar = () => {
                     }
                 </div>
                 
-                <div className="bottom">
+                <div className="bottom ">
                     <div className="bottom-item recent-entry hov group transition-all "onClick={toggleHelp}>
 
                         <div className='flex justify-center items-center'>
                             <div className='helps dimension' alt='code_icon' />
                         </div>
-                        {extended ? <p className='w-36'>Help</p> : null}
+                        {extended ? <p className='w-36 text'>Help</p> : null}
                         {showHelp ? null  : <span
                             class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm ${extended ? 'group-hover:translate-x-60' : 'group-hover:translate-x-16'}`}
                             >Help
@@ -110,7 +110,7 @@ const Sidebar = () => {
                         <div className=' flex justify-center items-center'>
                             <div className='style dimension' alt='code_icon' />
                         </div>
-                        {extended ? <p className='w-36'>Theme</p> : null}
+                        {extended ? <p className='w-36 text'>Theme</p> : null}
                         {showBGTheme ? null  : <span
                             class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm ${extended ? 'group-hover:translate-x-60' : 'group-hover:translate-x-16'}`}
                             >Theme
@@ -123,7 +123,7 @@ const Sidebar = () => {
                             <div className='settings dimension' alt='code_icon' />
                         </div>
 
-                        {extended ? <p className='w-36'>Setting</p> : null}
+                        {extended ? <p className='w-36 text'>Setting</p> : null}
                         {showTheme ? null  : <span
                             class={`absolute opacity-0 px-2 py-1 rounded-md group-hover:opacity-100 background text-sm ${extended ? 'group-hover:translate-x-60' : 'group-hover:translate-x-16'}`}
                             >settings
