@@ -84,7 +84,7 @@ const Main = () => {
                 {!showResult ? (
                     <>
                         <div className="greet tracking-tight">
-                            <p className='head font-outfit font-normal'>Hello, <span className='font-poppins font-normal'>{userName}</span></p>
+                            <p className='head font-poppins font-normal'>Hello<span className='font-outfit'>,</span> {userName}</p>
                             <p className='bigText font-poppins -mt-5'>How can I help you today?</p>
                         </div>
                         <div className="cards mt-5">
