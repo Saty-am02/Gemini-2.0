@@ -281,8 +281,6 @@ body {
         color: var(--sidebarBG-400);
         padding: 20px;
         display: inline-block;
-
-
     }
 
     .greet .head {
@@ -291,8 +289,6 @@ body {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         width: 60%;
-        white-space: nowrap;
-        overflow: hidden;
         animation: typing 1s ease-out;
     }
 
