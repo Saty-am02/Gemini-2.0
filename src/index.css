@@ -288,6 +288,7 @@ body {
         background-size: cover;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        overflow: hidden;
         width: 60%;
         animation: typing 1s ease-out;
     }
